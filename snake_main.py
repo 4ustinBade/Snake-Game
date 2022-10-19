@@ -4,6 +4,8 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+global highscore = 0
+
 # Screen set up
 screen = Screen()
 screen.setup(width = 600, height = 600)
@@ -15,14 +17,13 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 
-
 screen.listen()
 screen.onkey(snake.move_up, "w")
 screen.onkey(snake.move_down, "s")
 screen.onkey(snake.move_left, "a")
 screen.onkey(snake.move_right, "d")
 
-
+print(highscore)
 game_is_on = True
 while game_is_on:
     screen.update()
@@ -36,7 +37,7 @@ while game_is_on:
         scoreboard.refresh()
 
     # Detect collision with walls
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280 :
+    if snake.head.xcor() > 299 or snake.head.xcor() < -299 or snake.head.ycor() > 299 or snake.head.ycor() < -299 :
         scoreboard.game_over()
         game_is_on = False
 
@@ -48,7 +49,6 @@ while game_is_on:
             scoreboard.game_over()
             game_is_on = False
             
-    
 # exit
 screen.exitonclick()
 
