@@ -4,7 +4,7 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
-global highscore = 0
+
 
 # Screen set up
 screen = Screen()
@@ -23,7 +23,7 @@ screen.onkey(snake.move_down, "s")
 screen.onkey(snake.move_left, "a")
 screen.onkey(snake.move_right, "d")
 
-print(highscore)
+
 game_is_on = True
 while game_is_on:
     screen.update()
@@ -42,10 +42,8 @@ while game_is_on:
         game_is_on = False
 
     # Detect collision with tail
-    for segment in snake.segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
             scoreboard.game_over()
             game_is_on = False
             
